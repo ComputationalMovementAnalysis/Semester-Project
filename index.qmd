@@ -1,0 +1,176 @@
+---
+title: Semseter Project Computational Movement Analysis
+subtitle: Instructions on working with Quarto and GitHub
+references:
+- type: online
+  id: press
+  author: Gil Press
+  title: Cleaning Big Data Most Time-Consuming, Least Enjoyable Data Science Task, Survey Says
+  url: https://www.forbes.com/sites/gilpress/2016/03/23 data-preparation-most-time-consuming-least-enjoyable-data-science-task-survey-says/
+  year: 2016
+---
+
+
+These instructions help you work with Quarto and GitHub on your Semesterproject in the course *Computational Movement Analysis* (aka *Patterns and Trends in Environmental Data*). 
+
+## Setting up GitHub
+
+Instructions to setting up your Repo on GitHub:
+
+1. One team member copies the [template repo](https://github.com/ComputationalMovementAnalysis/Project-template) to his / her GitHub account by clicking on Button *Use this tempalte* → *Create a new repository* (see @fig-use-template)
+2. Give the repo a reasonable name and optionally a description, make sure the visibility is set to *Public*, not *Private*. Confirm by clicking on *Create repository*.
+3. Authenticate your team member on GitHub by clicking on *Settings* → *Collaborators* → *Add People*. Enter the username of your team member and confirm by clicking on the button. You team member should now accept this invitation which is sent via mail. 
+
+Now your Repo is correctly set up on GitHub. To work on the project on your local computer, you need to clone it. There is a very easy way to do this from within RStudio, as described in the next chapter.
+
+
+
+
+![](Create-new-Repo.png){#fig-use-template width="50%"}
+
+
+
+## Work on the research *proposal* in RStudio
+
+Now setup RStudio to work with the project locally. In RStudio:
+
+1. Click on *File* → *New Project* → *Version Control* → Git. In Field *Repository URL*, copy-and-paste the URL to your GitHub Repo. Choose a reasonable parent directory by clicking on *Browse* and then click on *Create project*
+2. Open the file *Readme.md*. Fill out this markdown documents by replacing the placeholders with the information about your project. 
+3. Once you are done, render the markdown file to pdf by running the following command:
+
+   ```{.bash}
+   quarto render Readme.md --to pdf
+   ```
+4. Now, *add*, *commit* and push your changes to GitHub. You can use the RStudio *Git Panel* for this or the following bash commands
+   
+   ```{.bash}
+   git add Readme.md
+   git add Readme.pdf
+   git commit -m "add research proposal"
+   git push
+   ```
+
+
+## Work on your research *project* in RStudio
+
+- Start developing your R-Code in the first code chunk in *index.qmd* (the chunk is labelled `preprocessing`). 
+  - Since you will spend most of your time on getting your data into the right form [see @press], the bulk of your R-code will go here
+  - Add inline comments to this code
+  - Explain what the code does on a meta level in prose in your document
+  - If you have computationally heavy preprocessing to do, read the @sec-heavy-computation.
+- To write prose (english or german text), use the according Subsections in *index.qmd* 
+- To add tables, figures or maps to your report, add code chunks in the appropriate section. More on this in @sec-maps-plots-tables
+
+
+### YAML Header
+
+Note that index.qmd has default [chunk options](https://quarto.org/docs/reference/cells/cells-knitr.html#cell-output) set in the [YAML header](https://quarto.org/docs/get-started/hello/rstudio.html#yaml-header) (first few lines in between the two `---`). Please don't change these specific options (except for the `lang` option). If for some reason you want to change this behaviour for a specific chunk, you can override these options by setting the chunk options within the chunk (more information [here](https://quarto.org/docs/get-started/hello/rstudio.html#code-chunks)). 
+
+
+```{.yaml}
+---
+format:
+  html:
+    code-fold: true     # makes the code in the output collapsable
+execute:
+  warning: false        # hides warnings from the generated output
+  message: false        # hides messages from the generated output
+lang: en                # sets the document language to english. Switch to "de" if you write in german
+---
+```
+
+
+### Heavy computation {#sec-heavy-computation}
+
+Including *all* your code index.qmd and rendering it each time you want to preview your report makes your report less error prone and more reproducible, but this workflow can be cumbersome when the code takes a long time to execute. This prevents you iterating fast when writing up your report. We suggest the following method to solve this:
+
+Outsource your preprocessing steps and especially the heavy computation into a seperate R-Script called `preprocessing.R`. In this script, generate all outputs that you will need in your report (index.qmd). 
+
+To "prove" that this script runs on your machine from top to bottom, in a new session and without any errors, use the function `knitr::spin("preprocessing.R")` from the package [`knitr`](https://yihui.org/knitr/) (you might need to install this first). **Push the resulting files (`preprocessing.html` / `preprocessing.md`) to GitHub** (this is a hard requirement).
+
+### Maps, Plots, Tables {#sec-maps-plots-tables}
+
+Interactive maps are only reasonable for small amounts of data (e.g. a few locations of a single wild boar). If you want to show a large amount of data, consider making a static map instead (using `tmap_mode("plot")`). 
+
+If you want to visualize a dataframe as a table, you can using the function `knitr::kabel(df)` (replace `df` with the name of your `data.frame`). 
+
+To add a caption (text) to a figure, using the `#| fig-cap: ` option, as in the example below. Similarly, a caption for a table is added via `#| tbl-cap`. More information for [figures](https://quarto.org/docs/reference/cells/cells-knitr.html#figures) and [tables](https://quarto.org/docs/reference/cells/cells-knitr.html#tables).
+
+````{.markdown}
+```{{r}}
+#| fig-cap: "A visualisation of the wild boar data"
+
+ggplot(wildboar) +
+  geom_sf()
+```
+````
+
+To reference (mention) a figure in your text, first add a label to the specific chunk using `label`. You can then reference that figure using the label you specified. 
+
+````{.markdown}
+
+The wildboar move about, see @fig-wildboar.
+
+```{{r}}
+#| fig-cap: "A visualisation of the wild boar data"
+#| label: fig-wildboar
+
+ggplot(wildboar) +
+  geom_sf()
+```
+````
+
+Note that for figures, the label must begin with `fig-`. For more information, see [here](https://quarto.org/docs/authoring/cross-references.html#computations). 
+
+Similarly, to reference a table in your text, use a label starting with `tbl-something` and reference it with `@tbl-something`, as shown below. For more information, read [this](https://quarto.org/docs/authoring/cross-references.html#computations-1).
+
+
+````{.markdown}
+
+@tbl-wildboar-summary shows a summary of the wildboar data.
+
+```{{r}}
+#| tbl-cap: "A summary of the wildboar data"
+#| label: tbl-wildboar-summary
+
+knitr::kable(wildboar_df)
+```
+````
+
+
+
+### Counting Words
+
+To count the number of words in your report, install the rpackage [`wordcountaddin`](https://github.com/benmarwick/wordcountaddin#how-to-install). 
+
+```{.r}
+# install.packages("pacman") 
+library("pacman")
+
+p_install_gh("benmarwick/wordcountaddin")
+```
+
+Then, add the follwing code chunk to your report:
+
+
+```
+wordcountaddin::word_count("index.qmd")
+```
+
+
+
+### Publishing
+
+To publish your report you need to follow the following steps:
+
+1. Render your file to html. If your file is called index.qmd this will create a file called index.html
+2. Push this file (and the corresponding folder `index_files/`) to github. Make sure this was sucessfull by looking for these files on GitHub. Alternatively, you can use the methods described [here](https://quarto.org/docs/publishing/github-pages.html)
+3. Activate GitHub Pages on your repo: *Settings* → *Pages* → Choose your branch (usually *Main*) → Select Folder "Root"
+4. Once your page is ready, the url to your website is: username.github.io/reponame/
+
+### Advanced
+
+If you are up for some advanced aspects of writing reports with Quarto, checkout 
+
+- Citations & Footnotes: https://quarto.org/docs/authoring/footnotes-and-citations.html
+- Journal Article Template: https://quarto.org/docs/journals/formats.html
