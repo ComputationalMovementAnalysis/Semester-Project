@@ -1,5 +1,5 @@
 ---
-title: Semseter Project Computational Movement Analysis
+title: Semester Project Computational Movement Analysis
 subtitle: Instructions on working with Quarto and GitHub
 format:
     html: 
@@ -29,13 +29,13 @@ Now your Repo is correctly set up on GitHub. To work on the project on your loca
 
 
 
-![](Create-new-Repo.png){#fig-use-template width="50%"}
+![](Create-new-Repo.png){#fig-use-template width="80%"}
 
 
 
 ## Work on the research *proposal* in RStudio
 
-Now setup RStudio to work with the project locally. In RStudio:
+Now, both team members can setup RStudio to work with the project locally. In RStudio:
 
 1. Click on *File* → *New Project* → *Version Control* → Git. In Field *Repository URL*, copy-and-paste the URL to your GitHub Repo. Choose a reasonable parent directory by clicking on *Browse* and then click on *Create project*
 2. Open the file *Readme.md*. Fill out this markdown documents by replacing the placeholders with the information about your project. 
