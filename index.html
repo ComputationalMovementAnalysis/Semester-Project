@@ -91,10 +91,28 @@ div.csl-indent {
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#setting-up-github" id="toc-setting-up-github" class="nav-link active" data-scroll-target="#setting-up-github">Setting up GitHub</a></li>
+  <li><a href="#work-on-the-research-proposal-in-rstudio" id="toc-work-on-the-research-proposal-in-rstudio" class="nav-link" data-scroll-target="#work-on-the-research-proposal-in-rstudio">Work on the research <em>proposal</em> in RStudio</a></li>
+  <li><a href="#work-on-your-research-project-in-rstudio" id="toc-work-on-your-research-project-in-rstudio" class="nav-link" data-scroll-target="#work-on-your-research-project-in-rstudio">Work on your research <em>project</em> in RStudio</a>
+  <ul class="collapse">
+  <li><a href="#yaml-header" id="toc-yaml-header" class="nav-link" data-scroll-target="#yaml-header">YAML Header</a></li>
+  <li><a href="#sec-heavy-computation" id="toc-sec-heavy-computation" class="nav-link" data-scroll-target="#sec-heavy-computation">Heavy computation</a></li>
+  <li><a href="#sec-maps-plots-tables" id="toc-sec-maps-plots-tables" class="nav-link" data-scroll-target="#sec-maps-plots-tables">Maps, Plots, Tables</a></li>
+  <li><a href="#counting-words" id="toc-counting-words" class="nav-link" data-scroll-target="#counting-words">Counting Words</a></li>
+  <li><a href="#publishing" id="toc-publishing" class="nav-link" data-scroll-target="#publishing">Publishing</a></li>
+  <li><a href="#advanced" id="toc-advanced" class="nav-link" data-scroll-target="#advanced">Advanced</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -225,8 +243,8 @@ div.csl-indent {
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"pacman"</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">p_install_gh</span>(<span class="st">"benmarwick/wordcountaddin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Then, add the follwing code chunk to your report:</p>
-<pre><code>wordcountaddin::word_count("index.qmd")</code></pre>
+<p>Then, add the following code chunk to your report:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wordcountaddin<span class="sc">::</span><span class="fu">word_count</span>(<span class="st">"index.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="publishing" class="level3">
 <h3 class="anchored" data-anchor-id="publishing">Publishing</h3>

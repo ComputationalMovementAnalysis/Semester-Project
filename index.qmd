@@ -1,6 +1,9 @@
 ---
 title: Semseter Project Computational Movement Analysis
 subtitle: Instructions on working with Quarto and GitHub
+format:
+    html: 
+        toc: true
 references:
 - type: online
   id: press
@@ -150,10 +153,10 @@ library("pacman")
 p_install_gh("benmarwick/wordcountaddin")
 ```
 
-Then, add the follwing code chunk to your report:
+Then, add the following code chunk to your report:
 
 
-```
+```{.r}
 wordcountaddin::word_count("index.qmd")
 ```
 
