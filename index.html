@@ -100,6 +100,7 @@ div.csl-indent {
    
   <ul>
   <li><a href="#setting-up-github" id="toc-setting-up-github" class="nav-link active" data-scroll-target="#setting-up-github">Setting up GitHub</a></li>
+  <li><a href="#setup-your-project-locally-in-rstudio" id="toc-setup-your-project-locally-in-rstudio" class="nav-link" data-scroll-target="#setup-your-project-locally-in-rstudio">Setup your project <em>locally</em> in RStudio</a></li>
   <li><a href="#work-on-the-research-proposal-in-rstudio" id="toc-work-on-the-research-proposal-in-rstudio" class="nav-link" data-scroll-target="#work-on-the-research-proposal-in-rstudio">Work on the research <em>proposal</em> in RStudio</a></li>
   <li><a href="#work-on-your-research-project-in-rstudio" id="toc-work-on-your-research-project-in-rstudio" class="nav-link" data-scroll-target="#work-on-your-research-project-in-rstudio">Work on your research <em>project</em> in RStudio</a>
   <ul class="collapse">
@@ -155,96 +156,89 @@ div.csl-indent {
 </figure>
 </div>
 </section>
+<section id="setup-your-project-locally-in-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="setup-your-project-locally-in-rstudio">Setup your project <em>locally</em> in RStudio</h2>
+<p>Now, <strong>both</strong> team members can setup RStudio to work with the project locally. In RStudio, click on <em>File</em> → <em>New Project</em> → <em>Version Control</em> → Git. In Field <em>Repository URL</em>, copy-and-paste the URL to your GitHub Repo. Choose a reasonable parent directory by clicking on <em>Browse</em> and then click on <em>Create project</em></p>
+</section>
 <section id="work-on-the-research-proposal-in-rstudio" class="level2">
 <h2 class="anchored" data-anchor-id="work-on-the-research-proposal-in-rstudio">Work on the research <em>proposal</em> in RStudio</h2>
-<p>Now, both team members can setup RStudio to work with the project locally. In RStudio:</p>
-<ol type="1">
-<li><p>Click on <em>File</em> → <em>New Project</em> → <em>Version Control</em> → Git. In Field <em>Repository URL</em>, copy-and-paste the URL to your GitHub Repo. Choose a reasonable parent directory by clicking on <em>Browse</em> and then click on <em>Create project</em></p></li>
-<li><p>Open the file <em>Readme.md</em>. Fill out this markdown documents by replacing the placeholders with the information about your project.</p></li>
-<li><p>Once you are done, render the markdown file to pdf by running the following command:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render Readme.md <span class="at">--to</span> pdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Now, <em>add</em>, <em>commit</em> and push your changes to GitHub. You can use the RStudio <em>Git Panel</em> for this or the following bash commands</p>
+<p>The file <em>Readme.md</em> is the file you will use to submit your research proposal. Open this file in RStudio and fill out this markdown document by replacing the placeholders with the information about your project. Once you are done, render the markdown file to pdf by running the following command:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render Readme.md <span class="at">--to</span> pdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, <em>add</em>, <em>commit</em> and push your changes to GitHub. You can use the RStudio <em>Git Panel</em> for this or the following bash commands</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add Readme.md</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add Readme.pdf</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"add research proposal"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ol>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, the other team member has to pull the changes that were pushed in the last step. Use the pull button for this or the following git command:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="work-on-your-research-project-in-rstudio" class="level2">
 <h2 class="anchored" data-anchor-id="work-on-your-research-project-in-rstudio">Work on your research <em>project</em> in RStudio</h2>
-<ul>
-<li>Start developing your R-Code in the first code chunk in <em>index.qmd</em> (the chunk is labelled <code>preprocessing</code>).
-<ul>
-<li>Since you will spend most of your time on getting your data into the right form <span class="citation" data-cites="press">(see <a href="#ref-press" role="doc-biblioref">Gil Press, n.d.</a>)</span>, the bulk of your R-code will go here</li>
-<li>Add inline comments to this code</li>
-<li>Explain what the code does on a meta level in prose in your document</li>
-<li>If you have computationally heavy preprocessing to do, read the <a href="#sec-heavy-computation" class="quarto-xref">Section&nbsp;3.2</a>.</li>
-</ul></li>
-<li>To write prose (english or german text), use the according Subsections in <em>index.qmd</em></li>
-<li>To add tables, figures or maps to your report, add code chunks in the appropriate section. More on this in <a href="#sec-maps-plots-tables" class="quarto-xref">Section&nbsp;3.3</a></li>
-</ul>
+<p>You will use the Quarto-file <em>index.qmd</em> to write your project report. You can develop your R-Code in the first code chunk of this file (the chunk is labelled <code>preprocessing</code>).</p>
+<p>Since you will spend most of your time on getting your data into the right form <span class="citation" data-cites="press">(see <a href="#ref-press" role="doc-biblioref">Gil Press, n.d.</a>)</span>, the bulk of your R-code will go here. Please add inline comments to this code, and explain what what your steps are <em>on a meta level</em> in prose in your document. If you have computationally heavy preprocessing to do, read the section on <a href="#sec-heavy-computation">Heavy Computation</a>.</p>
+<p>To write prose (english or german text), use the according Subsections in <em>index.qmd</em>. To add tables, figures or maps to your report, add code chunks in the appropriate section. More on this in <a href="#sec-maps-plots-tables">Maps, Plots, Tables</a>.</p>
 <section id="yaml-header" class="level3">
 <h3 class="anchored" data-anchor-id="yaml-header">YAML Header</h3>
 <p>Note that index.qmd has default <a href="https://quarto.org/docs/reference/cells/cells-knitr.html#cell-output">chunk options</a> set in the <a href="https://quarto.org/docs/get-started/hello/rstudio.html#yaml-header">YAML header</a> (first few lines in between the two <code>---</code>). Please don’t change these specific options (except for the <code>lang</code> option). If for some reason you want to change this behaviour for a specific chunk, you can override these options by setting the chunk options within the chunk (more information <a href="https://quarto.org/docs/get-started/hello/rstudio.html#code-chunks">here</a>).</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">     # makes the code in the output collapsable</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co">        # hides warnings from the generated output</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co">        # hides messages from the generated output</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lang</span><span class="kw">:</span><span class="at"> en</span><span class="co">                # sets the document language to english. Switch to "de" if you write in german</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">     # makes the code in the output collapsable</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co">        # hides warnings from the generated output</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co">        # hides messages from the generated output</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lang</span><span class="kw">:</span><span class="at"> en</span><span class="co">                # sets the document language to english. Switch to "de" if you write in german</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="sec-heavy-computation" class="level3">
 <h3 class="anchored" data-anchor-id="sec-heavy-computation">Heavy computation</h3>
 <p>Including <em>all</em> your code index.qmd and rendering it each time you want to preview your report makes your report less error prone and more reproducible, but this workflow can be cumbersome when the code takes a long time to execute. This prevents you iterating fast when writing up your report. We suggest the following method to solve this:</p>
 <p>Outsource your preprocessing steps and especially the heavy computation into a seperate R-Script called <code>preprocessing.R</code>. In this script, generate all outputs that you will need in your report (index.qmd).</p>
-<p>To “prove” that this script runs on your machine from top to bottom, in a new session and without any errors, use the function <code>knitr::spin("preprocessing.R")</code> from the package <a href="https://yihui.org/knitr/"><code>knitr</code></a> (you might need to install this first). <strong>Push the resulting files (<code>preprocessing.html</code> / <code>preprocessing.md</code>) to GitHub</strong> (this is a hard requirement).</p>
+<p>To “prove” that this script runs on your machine from top to bottom, in a new session and without any errors, use the function <code>knitr::spin("preprocessing.R")</code> from the package <a href="https://yihui.org/knitr/"><code>knitr</code></a> (you might need to install this first). <strong>Push the resulting files</strong> (<code>preprocessing.html</code> / <code>preprocessing.md</code>) <strong>to GitHub</strong> (this is a hard requirement).</p>
 </section>
 <section id="sec-maps-plots-tables" class="level3">
 <h3 class="anchored" data-anchor-id="sec-maps-plots-tables">Maps, Plots, Tables</h3>
 <p>Interactive maps are only reasonable for small amounts of data (e.g.&nbsp;a few locations of a single wild boar). If you want to show a large amount of data, consider making a static map instead (using <code>tmap_mode("plot")</code>).</p>
 <p>If you want to visualize a dataframe as a table, you can using the function <code>knitr::kabel(df)</code> (replace <code>df</code> with the name of your <code>data.frame</code>).</p>
 <p>To add a caption (text) to a figure, using the <code>#| fig-cap:</code> option, as in the example below. Similarly, a caption for a table is added via <code>#| tbl-cap</code>. More information for <a href="https://quarto.org/docs/reference/cells/cells-knitr.html#figures">figures</a> and <a href="https://quarto.org/docs/reference/cells/cells-knitr.html#tables">tables</a>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "A visualisation of the wild boar data"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(wildboar) +</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_sf()</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To reference (mention) a figure in your text, first add a label to the specific chunk using <code>label</code>. You can then reference that figure using the label you specified.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>The wildboar move about, see @fig-wildboar.</span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "A visualisation of the wild boar data"</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "A visualisation of the wild boar data"</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-wildboar</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(wildboar) +</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_sf()</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Note that for figures, the label must begin with <code>fig-</code>. For more information, see <a href="https://quarto.org/docs/authoring/cross-references.html#computations">here</a>.</p>
-<p>Similarly, to reference a table in your text, use a label starting with <code>tbl-something</code> and reference it with <code>@tbl-something</code>, as shown below. For more information, read <a href="https://quarto.org/docs/authoring/cross-references.html#computations-1">this</a>.</p>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(wildboar) +</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_sf()</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To reference (mention) a figure in your text, first add a label to the specific chunk using <code>label</code>. You can then reference that figure using the label you specified.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>@tbl-wildboar-summary shows a summary of the wildboar data.</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>The wildboar move about, see @fig-wildboar.</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">#| tbl-cap: "A summary of the wildboar data"</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: tbl-wildboar-summary</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "A visualisation of the wild boar data"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-wildboar</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::kable(wildboar_df)</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(wildboar) +</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_sf()</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Note that for figures, the label must begin with <code>fig-</code>. For more information, see <a href="https://quarto.org/docs/authoring/cross-references.html#computations">here</a>.</p>
+<p>Similarly, to reference a table in your text, use a label starting with <code>tbl-something</code> and reference it with <code>@tbl-something</code>, as shown below. For more information, read <a href="https://quarto.org/docs/authoring/cross-references.html#computations-1">this</a>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>@tbl-wildboar-summary shows a summary of the wildboar data.</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="in">#| tbl-cap: "A summary of the wildboar data"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: tbl-wildboar-summary</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::kable(wildboar_df)</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="counting-words" class="level3">
 <h3 class="anchored" data-anchor-id="counting-words">Counting Words</h3>
 <p>To count the number of words in your report, install the rpackage <a href="https://github.com/benmarwick/wordcountaddin#how-to-install"><code>wordcountaddin</code></a>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pacman") </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"pacman"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">p_install_gh</span>(<span class="st">"benmarwick/wordcountaddin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pacman") </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"pacman"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">p_install_gh</span>(<span class="st">"benmarwick/wordcountaddin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then, add the following code chunk to your report:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>wordcountaddin<span class="sc">::</span><span class="fu">word_count</span>(<span class="st">"index.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>wordcountaddin<span class="sc">::</span><span class="fu">word_count</span>(<span class="st">"index.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="publishing" class="level3">
 <h3 class="anchored" data-anchor-id="publishing">Publishing</h3>
