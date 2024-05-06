@@ -27,42 +27,44 @@ Instructions to setting up your Repo on GitHub:
 Now your Repo is correctly set up on GitHub. To work on the project on your local computer, you need to clone it. There is a very easy way to do this from within RStudio, as described in the next chapter.
 
 
-
-
 ![](Create-new-Repo.png){#fig-use-template width="80%"}
 
+
+## Setup your project *locally* in RStudio
+
+Now, **both** team members can setup RStudio to work with the project locally. In RStudio, click on *File* → *New Project* → *Version Control* → Git. In Field *Repository URL*, copy-and-paste the URL to your GitHub Repo. Choose a reasonable parent directory by clicking on *Browse* and then click on *Create project*
 
 
 ## Work on the research *proposal* in RStudio
 
-Now, both team members can setup RStudio to work with the project locally. In RStudio:
+The file *Readme.md* is the file you will use to submit your research proposal. Open this file in RStudio and fill out this markdown document by replacing the placeholders with the information about your project. Once you are done, render the markdown file to pdf by running the following command:
 
-1. Click on *File* → *New Project* → *Version Control* → Git. In Field *Repository URL*, copy-and-paste the URL to your GitHub Repo. Choose a reasonable parent directory by clicking on *Browse* and then click on *Create project*
-2. Open the file *Readme.md*. Fill out this markdown documents by replacing the placeholders with the information about your project. 
-3. Once you are done, render the markdown file to pdf by running the following command:
+```{.bash}
+quarto render Readme.md --to pdf
+```
 
-   ```{.bash}
-   quarto render Readme.md --to pdf
-   ```
-4. Now, *add*, *commit* and push your changes to GitHub. You can use the RStudio *Git Panel* for this or the following bash commands
+Now, *add*, *commit* and push your changes to GitHub. You can use the RStudio *Git Panel* for this or the following bash commands
    
-   ```{.bash}
-   git add Readme.md
-   git add Readme.pdf
-   git commit -m "add research proposal"
-   git push
-   ```
+```{.bash}
+git add Readme.md
+git add Readme.pdf
+git commit -m "add research proposal"
+git push
+```
 
+Now, the other team member has to pull the changes that were pushed in the last step. Use the pull button for this or the following git command:
+
+```{.bash}
+git pull
+```
 
 ## Work on your research *project* in RStudio
 
-- Start developing your R-Code in the first code chunk in *index.qmd* (the chunk is labelled `preprocessing`). 
-  - Since you will spend most of your time on getting your data into the right form [see @press], the bulk of your R-code will go here
-  - Add inline comments to this code
-  - Explain what the code does on a meta level in prose in your document
-  - If you have computationally heavy preprocessing to do, read the @sec-heavy-computation.
-- To write prose (english or german text), use the according Subsections in *index.qmd* 
-- To add tables, figures or maps to your report, add code chunks in the appropriate section. More on this in @sec-maps-plots-tables
+You will use the Quarto-file *index.qmd* to write your project report. You can develop your R-Code in the first code chunk of this file (the chunk is labelled `preprocessing`). 
+
+Since you will spend most of your time on getting your data into the right form [see @press], the bulk of your R-code will go here. Please add inline comments to this code, and explain what what your steps are *on a meta level* in prose in your document. If you have computationally heavy preprocessing to do, read the section on [Heavy Computation](#sec-heavy-computation).
+
+To write prose (english or german text), use the according Subsections in *index.qmd*. To add tables, figures or maps to your report, add code chunks in the appropriate section. More on this in [Maps, Plots, Tables](#sec-maps-plots-tables).
 
 
 ### YAML Header
@@ -89,7 +91,7 @@ Including *all* your code index.qmd and rendering it each time you want to previ
 
 Outsource your preprocessing steps and especially the heavy computation into a seperate R-Script called `preprocessing.R`. In this script, generate all outputs that you will need in your report (index.qmd). 
 
-To "prove" that this script runs on your machine from top to bottom, in a new session and without any errors, use the function `knitr::spin("preprocessing.R")` from the package [`knitr`](https://yihui.org/knitr/) (you might need to install this first). **Push the resulting files (`preprocessing.html` / `preprocessing.md`) to GitHub** (this is a hard requirement).
+To "prove" that this script runs on your machine from top to bottom, in a new session and without any errors, use the function `knitr::spin("preprocessing.R")` from the package [`knitr`](https://yihui.org/knitr/) (you might need to install this first). **Push the resulting files** (`preprocessing.html` / `preprocessing.md`) **to GitHub** (this is a hard requirement).
 
 ### Maps, Plots, Tables {#sec-maps-plots-tables}
 
