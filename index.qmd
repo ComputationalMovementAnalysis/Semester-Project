@@ -71,15 +71,15 @@ Some of the files in the repository should not be tracked via git. This can be d
 
 Here are some examples on how you can exclude folders and files in .gitignore:
 
-```sh
+```{.git}
 /data             # ignores the folder data
 *.csv             # ignores all files that end with .csv
 garmin-export.csv # ignores the specific file called garmin-export.csv
 ```
 
-For more information on .gitignore have a look [here](https://git-scm.com/docs/gitignore#_pattern_format)
+For more information on .gitignore have a look [here](https://git-scm.com/docs/gitignore#_pattern_format).
 
-If you already have committed a File to Git you can go through the following [instruction](https://sentry.io/answers/delete-a-file-from-a-git-repository/) to completely remove it from Git and Github again. If you need help with this, you can get in contact with us.
+If you already have committed a file to Git that you did not want to commit, you can go through the following [instruction](https://sentry.io/answers/delete-a-file-from-a-git-repository/) to completely remove it from Git and Github again. If you need help with this, you can get in contact with us.
 
 ### YAML Header
 

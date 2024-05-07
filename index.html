@@ -104,7 +104,7 @@ div.csl-indent {
   <li><a href="#work-on-the-research-proposal-in-rstudio" id="toc-work-on-the-research-proposal-in-rstudio" class="nav-link" data-scroll-target="#work-on-the-research-proposal-in-rstudio">Work on the research <em>proposal</em> in RStudio</a></li>
   <li><a href="#work-on-your-research-project-in-rstudio" id="toc-work-on-your-research-project-in-rstudio" class="nav-link" data-scroll-target="#work-on-your-research-project-in-rstudio">Work on your research <em>project</em> in RStudio</a>
   <ul class="collapse">
-  <li><a href="#handling-of-datasets" id="toc-handling-of-datasets" class="nav-link" data-scroll-target="#handling-of-datasets">Handling of Datasets</a></li>
+  <li><a href="#handling-of-bigsensitive-datasets" id="toc-handling-of-bigsensitive-datasets" class="nav-link" data-scroll-target="#handling-of-bigsensitive-datasets">Handling of big/sensitive Datasets</a></li>
   <li><a href="#yaml-header" id="toc-yaml-header" class="nav-link" data-scroll-target="#yaml-header">YAML Header</a></li>
   <li><a href="#sec-heavy-computation" id="toc-sec-heavy-computation" class="nav-link" data-scroll-target="#sec-heavy-computation">Heavy computation</a></li>
   <li><a href="#sec-maps-plots-tables" id="toc-sec-maps-plots-tables" class="nav-link" data-scroll-target="#sec-maps-plots-tables">Maps, Plots, Tables</a></li>
@@ -179,15 +179,15 @@ Figure&nbsp;1
 <p>You will use the Quarto-file <em>index.qmd</em> to write your project report. You can develop your R-Code in the first code chunk of this file (the chunk is labelled <code>preprocessing</code>).</p>
 <p>Since you will spend most of your time on getting your data into the right form <span class="citation" data-cites="press">(see <a href="#ref-press" role="doc-biblioref">Gil Press, n.d.</a>)</span>, the bulk of your R-code will go here. Please add inline comments to this code, and explain what what your steps are <em>on a meta level</em> in prose in your document. If you have computationally heavy preprocessing to do, read the section on <a href="#sec-heavy-computation">Heavy Computation</a>.</p>
 <p>To write prose (english or german text), use the according Subsections in <em>index.qmd</em>. To add tables, figures or maps to your report, add code chunks in the appropriate section. More on this in <a href="#sec-maps-plots-tables">Maps, Plots, Tables</a>.</p>
-<section id="handling-of-datasets" class="level3">
-<h3 class="anchored" data-anchor-id="handling-of-datasets">Handling of Datasets</h3>
+<section id="handling-of-bigsensitive-datasets" class="level3">
+<h3 class="anchored" data-anchor-id="handling-of-bigsensitive-datasets">Handling of big/sensitive Datasets</h3>
 <p>Some of the files in the repository should not be tracked via git. This can be due to a big file size or due to the sensitive nature of the data (e.g.&nbsp;your movement data). We recommend that you create a folder called <code>data</code> and move all your datasets into this folder. In order to ignore this folder and files from being tracked by git we need to add it to the .gitigore file. You should already have such a file in your projects root folder. If this is not the case you can create one by clicking on File → New File → Text File and then saving this file in the root directory of your project with the name .gitignore (note the period!).</p>
 <p>Here are some examples on how you can exclude folders and files in .gitignore:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/data</span> <span class="co">#ignores the folder data</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">*.csv</span> <span class="co">#ignores all files that end with .csv</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">garmin-export.csv</span> <span class="co">#ignores the specific file called garmin-export.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>For more information on .gitignore have a look <a href="https://git-scm.com/docs/gitignore#_pattern_format">here</a></p>
-<p>If you already have committed a File to Git you can go through the following <a href="https://sentry.io/answers/delete-a-file-from-a-git-repository/">instruction</a> to completely remove it from Git and Github again. If you need help with this, you can get in contact with us.</p>
+<pre class="git"><code>/data             # ignores the folder data
+*.csv             # ignores all files that end with .csv
+garmin-export.csv # ignores the specific file called garmin-export.csv</code></pre>
+<p>For more information on .gitignore have a look <a href="https://git-scm.com/docs/gitignore#_pattern_format">here</a>.</p>
+<p>If you already have committed a file to Git that you did not want to commit, you can go through the following <a href="https://sentry.io/answers/delete-a-file-from-a-git-repository/">instruction</a> to completely remove it from Git and Github again. If you need help with this, you can get in contact with us.</p>
 </section>
 <section id="yaml-header" class="level3">
 <h3 class="anchored" data-anchor-id="yaml-header">YAML Header</h3>
