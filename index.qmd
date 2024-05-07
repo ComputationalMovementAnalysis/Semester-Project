@@ -13,7 +13,6 @@ references:
   year: 2016
 ---
 
-
 These instructions help you work with Quarto and GitHub on your Semesterproject in the course *Computational Movement Analysis* (aka *Patterns and Trends in Environmental Data*). 
 
 ## Setting up GitHub
@@ -66,6 +65,21 @@ Since you will spend most of your time on getting your data into the right form 
 
 To write prose (english or german text), use the according Subsections in *index.qmd*. To add tables, figures or maps to your report, add code chunks in the appropriate section. More on this in [Maps, Plots, Tables](#sec-maps-plots-tables).
 
+### Handling of big/sensitive Datasets
+
+Some of the files in the repository should not be tracked via git. This can be due to a big file size or due to the sensitive nature of the data (e.g. your movement data). We recommend that you create a folder called `data` and move all your datasets into this folder. In order to ignore this folder and files from being tracked by git we need to add it to the .gitigore file. You should already have such a file in your projects root folder. If this is not the case you can create one by clicking on File → New File → Text File and then saving this file in the root directory of your project with the name .gitignore (note the period!).
+
+Here are some examples on how you can exclude folders and files in .gitignore:
+
+```sh
+/data             # ignores the folder data
+*.csv             # ignores all files that end with .csv
+garmin-export.csv # ignores the specific file called garmin-export.csv
+```
+
+For more information on .gitignore have a look [here](https://git-scm.com/docs/gitignore#_pattern_format)
+
+If you already have committed a File to Git you can go through the following [instruction](https://sentry.io/answers/delete-a-file-from-a-git-repository/) to completely remove it from Git and Github again. If you need help with this, you can get in contact with us.
 
 ### YAML Header
 
@@ -83,7 +97,6 @@ execute:
 lang: en                # sets the document language to english. Switch to "de" if you write in german
 ---
 ```
-
 
 ### Heavy computation {#sec-heavy-computation}
 
@@ -142,8 +155,6 @@ knitr::kable(wildboar_df)
 ```
 ````
 
-
-
 ### Counting Words
 
 To count the number of words in your report, install the rpackage [`wordcountaddin`](https://github.com/benmarwick/wordcountaddin#how-to-install). 
@@ -161,8 +172,6 @@ Then, add the following code chunk to your report:
 ```{.r}
 wordcountaddin::word_count("index.qmd")
 ```
-
-
 
 ### Publishing
 
