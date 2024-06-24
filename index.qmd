@@ -69,7 +69,7 @@ To write prose (english or german text), use the according Subsections in *index
 
 ### YAML Header
 
-Note that index.qmd has default [chunk options](https://quarto.org/docs/reference/cells/cells-knitr.html#cell-output) set in the [YAML header](https://quarto.org/docs/get-started/hello/rstudio.html#yaml-header) (first few lines in between the two `---`). Please don't change these specific options (except for the `lang` option). If for some reason you want to change this behaviour for a specific chunk, you can override these options by setting the chunk options within the chunk (more information [here](https://quarto.org/docs/get-started/hello/rstudio.html#code-chunks)). 
+Note that index.qmd has default [chunk options](https://quarto.org/docs/reference/cells/cells-knitr.html#cell-output) set in the [YAML header](https://quarto.org/docs/get-started/hello/rstudio.html#yaml-header) (first few lines in between the two `---`). Please don't change these specific options (except for the `lang` option). If for some reason you want to change this behavior for a specific chunk, you can override these options by setting the chunk options within the chunk (more information [here](https://quarto.org/docs/get-started/hello/rstudio.html#code-chunks)). 
 
 
 ```{.yaml}
@@ -89,9 +89,51 @@ lang: en                # sets the document language to english. Switch to "de" 
 
 Including *all* your code index.qmd and rendering it each time you want to preview your report makes your report less error prone and more reproducible, but this workflow can be cumbersome when the code takes a long time to execute. This prevents you iterating fast when writing up your report. We suggest the following method to solve this:
 
-Outsource your preprocessing steps and especially the heavy computation into a seperate R-Script called `preprocessing.R`. In this script, generate all outputs that you will need in your report (index.qmd). 
+Outsource your preprocessing steps (and especially the heavy computation) into a seperate R-Script called `preprocessing.R`. Iteratively develop this script to import, clean an prepare your data. Then save your result to a file. You have several options:
 
-To "prove" that this script runs on your machine from top to bottom, in a new session and without any errors, use the function `knitr::spin("preprocessing.R")` from the package [`knitr`](https://yihui.org/knitr/) (you might need to install this first). **Push the resulting files** (`preprocessing.html` / `preprocessing.md`) **to GitHub** (this is a hard requirement).
+```{r}
+#| eval: false
+
+library(sf)
+library(readr)
+
+towns <- read_sf(system.file("sqlite/test3.sqlite",package="sf"), "Towns") 
+
+# saves the object to an R specific file, which can be imported with "load"
+save(towns, file = "towns.Rda")
+
+# saves the object to an R generic CSV, which might not be appropriate for 
+# geospatial data. CSVs can be imported with "read_csv()"
+write_csv(towns, "towns.csv")
+
+# saves the object in a geodata-specific format. Can be imported with "st_read()"
+st_write(towns, "towns.gpkg")
+
+```
+
+
+
+To "prove" that this script runs on your machine from top to bottom, in a new session and without any errors, use the function `knitr::spin("preprocessing.R")` from the package [`knitr`](https://yihui.org/knitr/) (you might need to install this first). Do this once you are sure the whole script runs smoothly without any errors. 
+
+Now, you can import the results from `preprocessing.R` in `index.qmd`:
+
+```{r}
+#| eval: false
+
+library(sf)
+library(readr)
+
+load("towns.Rda")   # OR
+
+towns <- read_csv("towns.csv") # OR
+
+towns <- st_read("towns.gpkg")
+```
+
+
+**Push the resulting files** (`preprocessing.html` / `preprocessing.md`) **to GitHub** (this is a hard requirement).
+
+
 
 ### Maps, Plots, Tables {#sec-maps-plots-tables}
 
