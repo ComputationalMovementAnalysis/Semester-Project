@@ -17,6 +17,8 @@ These instructions help you work with Quarto and GitHub on your Semesterproject 
 
 ## Setting up GitHub
 
+:::{.callout-note collapse="true" title="Optional (only if you use Git / GitHub)"}
+
 Instructions to setting up your Repo on GitHub:
 
 1. One team member copies the [template repo](https://github.com/ComputationalMovementAnalysis/Project-template) to his / her GitHub account by clicking on Button *Use this tempalte* → *Create a new repository* (see @fig-use-template)
@@ -29,18 +31,30 @@ Now your Repo is correctly set up on GitHub. To work on the project on your loca
 ![](Create-new-Repo.png){#fig-use-template width="80%"}
 
 
-## Setup your project *locally* in RStudio
+
+:::
+
+
+## Setup your project locally
+
+:::{.callout-note collapse="true" title="Optional (only if you use Git / GitHub)"}
+
 
 Now, **both** team members can setup RStudio to work with the project locally. In RStudio, click on *File* → *New Project* → *Version Control* → Git. In Field *Repository URL*, copy-and-paste the URL to your GitHub Repo. Choose a reasonable parent directory by clicking on *Browse* and then click on *Create project*
 
 
-## Work on the research *proposal* in RStudio
+:::
+
+## Work on the research proposal in RStudio
 
 The file *Readme.md* is the file you will use to submit your research proposal. Open this file in RStudio and fill out this markdown document by replacing the placeholders with the information about your project. Once you are done, render the markdown file to pdf by running the following command:
 
 ```{.bash}
 quarto render Readme.md --to pdf
 ```
+
+
+:::{.callout-note title="Optional (only if you use Git / GitHub)" collapse="true"}
 
 Now, *add*, *commit* and push your changes to GitHub. You can use the RStudio *Git Panel* for this or the following bash commands
    
@@ -57,6 +71,9 @@ Now, the other team member has to pull the changes that were pushed in the last 
 git pull
 ```
 
+
+:::
+
 ## Work on your research *project* in RStudio
 
 You will use the Quarto-file *index.qmd* to write your project report. You can develop your R-Code in the first code chunk of this file (the chunk is labelled `preprocessing`). 
@@ -65,7 +82,17 @@ Since you will spend most of your time on getting your data into the right form 
 
 To write prose (english or german text), use the according Subsections in *index.qmd*. To add tables, figures or maps to your report, add code chunks in the appropriate section. More on this in [Maps, Plots, Tables](#sec-maps-plots-tables).
 
+
+
 ### Handling of big/sensitive Datasets
+
+:::{.callout-note collapse="true" title="Optional (only if you use Git / GitHub)"}
+
+
+
+
+
+
 
 Some of the files in the repository should not be tracked via git. This can be due to a big file size or due to the sensitive nature of the data (e.g. your movement data). We recommend that you create a folder called `data` and move all your datasets into this folder. In order to ignore this folder and files from being tracked by git we need to add it to the .gitigore file. You should already have such a file in your projects root folder. If this is not the case you can create one by clicking on File → New File → Text File and then saving this file in the root directory of your project with the name .gitignore (note the period!).
 
@@ -80,6 +107,9 @@ garmin-export.csv # ignores the specific file called garmin-export.csv
 For more information on .gitignore have a look [here](https://git-scm.com/docs/gitignore#_pattern_format).
 
 If you already have committed a file to Git that you did not want to commit, you can go through the following [instruction](https://sentry.io/answers/delete-a-file-from-a-git-repository/) to completely remove it from Git and Github again. If you need help with this, you can get in contact with us.
+
+
+:::
 
 ### YAML Header
 
@@ -102,57 +132,52 @@ lang: en                # sets the document language to english. Switch to "de" 
 
 Including *all* your code index.qmd and rendering it each time you want to preview your report makes your report less error prone and more reproducible, but this workflow can be cumbersome when the code takes a long time to execute. This prevents you iterating fast when writing up your report. We suggest the following method to solve this:
 
-Outsource your preprocessing steps (and especially the heavy computation) into a seperate R-Script called `preprocessing.R`. Iteratively develop this script to import, clean an prepare your data. Then save your result to a file. You have several options:
+Outsource your preprocessing steps (and especially the heavy computation) into a seperate R-Script called `preprocessing.R`. Iteratively develop this script to import, clean an prepare your data. Then save your result to a file (e.g. as a geopackage, rda or csv file). 
 
-```{r}
+
+```{.r filename="preprocessing.R"}
 #| eval: false
+#| echo: false
+
 
 library(sf)
-library(readr)
 
-towns <- read_sf(system.file("sqlite/test3.sqlite",package="sf"), "Towns") 
+my_tracks <- read_sf("my_tracking_data.gpx") 
 
-# saves the object to an R specific file, which can be imported with "load"
-save(towns, file = "towns.Rda")
+# imagine some complex preprocessing logic here:
+my_tracks <- filter(my_tracks, segment_id = "one") 
 
-# saves the object to an R generic CSV, which might not be appropriate for 
-# geospatial data. CSVs can be imported with "read_csv()"
-write_csv(towns, "towns.csv")
-
-# saves the object in a geodata-specific format. Can be imported with "st_read()"
-st_write(towns, "towns.gpkg")
+# in the end, export your file under a new name:
+st_write(my_tracks, "my_tracks.gpkg")
 
 ```
-
-
-
-To "prove" that this script runs on your machine from top to bottom, in a new session and without any errors, use the function `knitr::spin("preprocessing.R")` from the package [`knitr`](https://yihui.org/knitr/) (you might need to install this first). Do this once you are sure the whole script runs smoothly without any errors. 
 
 Now, you can import the results from `preprocessing.R` in `index.qmd`:
 
-```{r}
-#| eval: false
+```{.r filename="index.qmd"}
 
 library(sf)
-library(readr)
 
-load("towns.Rda")   # OR
+# import the cleaned file from preprocessing.R
+my_tracks <- st_read("my_tracks.gpkg")
 
-towns <- read_csv("towns.csv") # OR
-
-towns <- st_read("towns.gpkg")
 ```
 
 
-**Push the resulting files** (`preprocessing.html` / `preprocessing.md`) **to GitHub** (this is a hard requirement).
+:::{.callout-important}
 
+To "prove" that this script runs on your machine from top to bottom, in a new session and without any errors, use the function `quarto::render("preprocessing.R")`. Do this once you are sure the whole script runs smoothly without any errors. 
 
+Publish the resulting file (`preprocessing.html`) and provide a link in your report (**this is a hard requirement**).
 
+:::
+
+ 
 ### Maps, Plots, Tables {#sec-maps-plots-tables}
 
 Interactive maps are only reasonable for small amounts of data (e.g. a few locations of a single wild boar). If you want to show a large amount of data, consider making a static map instead (using `tmap_mode("plot")`). 
 
-If you want to visualize a dataframe as a table, you can using the function `knitr::kabel(df)` (replace `df` with the name of your `data.frame`). 
+If you want to visualize a dataframe as a table, you can using the function `knitr::kabel(df)` (replace `df` with the name of your `data.frame`). For more complex tables, consider [`kableExtra`](https://haozhu233.github.io/kableExtra/) or [`gt`](https://gt.rstudio.com/).
 
 To add a caption (text) to a figure, using the `#| fig-cap: ` option, as in the example below. Similarly, a caption for a table is added via `#| tbl-cap`. More information for [figures](https://quarto.org/docs/reference/cells/cells-knitr.html#figures) and [tables](https://quarto.org/docs/reference/cells/cells-knitr.html#tables).
 
@@ -215,7 +240,11 @@ Then, add the following code chunk to your report:
 wordcountaddin::word_count("index.qmd")
 ```
 
-### Publishing
+
+### Publishing with GitHub
+
+:::{.callout-note collapse="true" title="Optional (only if you use Git)"}
+
 
 To publish your report you need to follow the following steps:
 
@@ -224,9 +253,58 @@ To publish your report you need to follow the following steps:
 3. Activate GitHub Pages on your repo: *Settings* → *Pages* → Choose your branch (usually *Main*) → Select Folder "Root"
 4. Once your page is ready, the url to your website is: username.github.io/reponame/
 
-### Advanced
+:::
 
-If you are up for some advanced aspects of writing reports with Quarto, checkout 
 
-- Citations & Footnotes: https://quarto.org/docs/authoring/footnotes-and-citations.html
-- Journal Article Template: https://quarto.org/docs/journals/formats.html
+### Citations
+
+To cite a paper:
+
+1. Copy the bibtex key from the paper you want to cite, e.g using google scholar [@fig-scholar]
+2. Create a file named `bibliography.bib` and paste the bibtex key from the previous step (see @lst-bibtex). You can change the entry label if you want (e.g. `laube2011`). You can add as many bibtex keys to this file as you like
+3. Add `bibliography.bib` to the YAML header of `index.qmd` under the entry `bibliography:` (see @lst-yaml)
+4. Now, you can cite Patricks paper anywhere in your text, e.g. using `@laube2011`.
+
+For more citation methods, see <https://quarto.org/docs/authoring/citations.html>
+
+
+:::{#fig-scholar layout-nrow=1}
+
+![Click on "Zitieren"](images/scholar-1.png){#fig-scholar-1}
+
+![Click on "Bibtex"](images/scholar-2.png){#fig-scholar-2}
+
+Export bibtex key from google scholar
+
+:::
+
+:::{#lst-bibtex}
+
+```{.bibtex filename="bibliography.bib" }
+@article{laube2011,
+  title={How fast is a cow? Cross-scale analysis of movement data},
+  author={Laube, Patrick and Purves, Ross S},
+  journal={Transactions in GIS},
+  volume={15},
+  number={3},
+  pages={401--418},
+  year={2011},
+  publisher={Wiley Online Library}
+}
+```
+
+:::
+
+:::{#lst-yaml}
+
+```{.yml filename="index.qmd"}
+bibliography: references.bib
+``` 
+
+
+:::
+
+
+### Templates
+
+If you are up for some advanced aspects of writing reports with Quarto, checkout Journal Article Template: <https://quarto.org/docs/journals/formats.html>

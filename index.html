@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.7.13">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -78,15 +78,16 @@ div.csl-indent {
 
 
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
-<script src="index_files/libs/quarto-html/quarto.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="index_files/libs/quarto-html/popper.min.js"></script>
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-66ab7fd5e73b7f0a764e0d49b3e29ab1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-4754b8554eee068ebeddff7466788e03.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -100,8 +101,8 @@ div.csl-indent {
    
   <ul>
   <li><a href="#setting-up-github" id="toc-setting-up-github" class="nav-link active" data-scroll-target="#setting-up-github">Setting up GitHub</a></li>
-  <li><a href="#setup-your-project-locally-in-rstudio" id="toc-setup-your-project-locally-in-rstudio" class="nav-link" data-scroll-target="#setup-your-project-locally-in-rstudio">Setup your project <em>locally</em> in RStudio</a></li>
-  <li><a href="#work-on-the-research-proposal-in-rstudio" id="toc-work-on-the-research-proposal-in-rstudio" class="nav-link" data-scroll-target="#work-on-the-research-proposal-in-rstudio">Work on the research <em>proposal</em> in RStudio</a></li>
+  <li><a href="#setup-your-project-locally" id="toc-setup-your-project-locally" class="nav-link" data-scroll-target="#setup-your-project-locally">Setup your project locally</a></li>
+  <li><a href="#work-on-the-research-proposal-in-rstudio" id="toc-work-on-the-research-proposal-in-rstudio" class="nav-link" data-scroll-target="#work-on-the-research-proposal-in-rstudio">Work on the research proposal in RStudio</a></li>
   <li><a href="#work-on-your-research-project-in-rstudio" id="toc-work-on-your-research-project-in-rstudio" class="nav-link" data-scroll-target="#work-on-your-research-project-in-rstudio">Work on your research <em>project</em> in RStudio</a>
   <ul class="collapse">
   <li><a href="#handling-of-bigsensitive-datasets" id="toc-handling-of-bigsensitive-datasets" class="nav-link" data-scroll-target="#handling-of-bigsensitive-datasets">Handling of big/sensitive Datasets</a></li>
@@ -109,8 +110,9 @@ div.csl-indent {
   <li><a href="#sec-heavy-computation" id="toc-sec-heavy-computation" class="nav-link" data-scroll-target="#sec-heavy-computation">Heavy computation</a></li>
   <li><a href="#sec-maps-plots-tables" id="toc-sec-maps-plots-tables" class="nav-link" data-scroll-target="#sec-maps-plots-tables">Maps, Plots, Tables</a></li>
   <li><a href="#counting-words" id="toc-counting-words" class="nav-link" data-scroll-target="#counting-words">Counting Words</a></li>
-  <li><a href="#publishing" id="toc-publishing" class="nav-link" data-scroll-target="#publishing">Publishing</a></li>
-  <li><a href="#advanced" id="toc-advanced" class="nav-link" data-scroll-target="#advanced">Advanced</a></li>
+  <li><a href="#publishing-with-github" id="toc-publishing-with-github" class="nav-link" data-scroll-target="#publishing-with-github">Publishing with GitHub</a></li>
+  <li><a href="#citations" id="toc-citations" class="nav-link" data-scroll-target="#citations">Citations</a></li>
+  <li><a href="#templates" id="toc-templates" class="nav-link" data-scroll-target="#templates">Templates</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -140,6 +142,18 @@ div.csl-indent {
 <p>These instructions help you work with Quarto and GitHub on your Semesterproject in the course <em>Computational Movement Analysis</em> (aka <em>Patterns and Trends in Environmental Data</em>).</p>
 <section id="setting-up-github" class="level2">
 <h2 class="anchored" data-anchor-id="setting-up-github">Setting up GitHub</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Optional (only if you use Git / GitHub)">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Optional (only if you use Git / GitHub)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>Instructions to setting up your Repo on GitHub:</p>
 <ol type="1">
 <li>One team member copies the <a href="https://github.com/ComputationalMovementAnalysis/Project-template">template repo</a> to his / her GitHub account by clicking on Button <em>Use this tempalte</em> → <em>Create a new repository</em> (see <a href="#fig-use-template" class="quarto-xref">Figure&nbsp;1</a>)</li>
@@ -147,7 +161,7 @@ div.csl-indent {
 <li>Authenticate your team member on GitHub by clicking on <em>Settings</em> → <em>Collaborators</em> → <em>Add People</em>. Enter the username of your team member and confirm by clicking on the button. You team member should now accept this invitation which is sent via mail.</li>
 </ol>
 <p>Now your Repo is correctly set up on GitHub. To work on the project on your local computer, you need to clone it. There is a very easy way to do this from within RStudio, as described in the next chapter.</p>
-<div id="fig-use-template" class="quarto-figure quarto-figure-center quarto-float anchored" width="80%">
+<div id="fig-use-template" class="quarto-float quarto-figure quarto-figure-center anchored" width="80%">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-use-template-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="Create-new-Repo.png" id="fig-use-template" class="img-fluid figure-img" style="width:80.0%">
@@ -157,15 +171,45 @@ Figure&nbsp;1
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
+</div>
 </section>
-<section id="setup-your-project-locally-in-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="setup-your-project-locally-in-rstudio">Setup your project <em>locally</em> in RStudio</h2>
+<section id="setup-your-project-locally" class="level2">
+<h2 class="anchored" data-anchor-id="setup-your-project-locally">Setup your project locally</h2>
+<div class="callout callout-style-default callout-note callout-titled" title="Optional (only if you use Git / GitHub)">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Optional (only if you use Git / GitHub)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>Now, <strong>both</strong> team members can setup RStudio to work with the project locally. In RStudio, click on <em>File</em> → <em>New Project</em> → <em>Version Control</em> → Git. In Field <em>Repository URL</em>, copy-and-paste the URL to your GitHub Repo. Choose a reasonable parent directory by clicking on <em>Browse</em> and then click on <em>Create project</em></p>
+</div>
+</div>
+</div>
 </section>
 <section id="work-on-the-research-proposal-in-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="work-on-the-research-proposal-in-rstudio">Work on the research <em>proposal</em> in RStudio</h2>
+<h2 class="anchored" data-anchor-id="work-on-the-research-proposal-in-rstudio">Work on the research proposal in RStudio</h2>
 <p>The file <em>Readme.md</em> is the file you will use to submit your research proposal. Open this file in RStudio and fill out this markdown document by replacing the placeholders with the information about your project. Once you are done, render the markdown file to pdf by running the following command:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render Readme.md <span class="at">--to</span> pdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled" title="Optional (only if you use Git / GitHub)">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Optional (only if you use Git / GitHub)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>Now, <em>add</em>, <em>commit</em> and push your changes to GitHub. You can use the RStudio <em>Git Panel</em> for this or the following bash commands</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add Readme.md</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add Readme.pdf</span>
@@ -173,6 +217,9 @@ Figure&nbsp;1
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now, the other team member has to pull the changes that were pushed in the last step. Use the pull button for this or the following git command:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="work-on-your-research-project-in-rstudio" class="level2">
 <h2 class="anchored" data-anchor-id="work-on-your-research-project-in-rstudio">Work on your research <em>project</em> in RStudio</h2>
@@ -181,6 +228,18 @@ Figure&nbsp;1
 <p>To write prose (english or german text), use the according Subsections in <em>index.qmd</em>. To add tables, figures or maps to your report, add code chunks in the appropriate section. More on this in <a href="#sec-maps-plots-tables">Maps, Plots, Tables</a>.</p>
 <section id="handling-of-bigsensitive-datasets" class="level3">
 <h3 class="anchored" data-anchor-id="handling-of-bigsensitive-datasets">Handling of big/sensitive Datasets</h3>
+<div class="callout callout-style-default callout-note callout-titled" title="Optional (only if you use Git / GitHub)">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Optional (only if you use Git / GitHub)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>Some of the files in the repository should not be tracked via git. This can be due to a big file size or due to the sensitive nature of the data (e.g.&nbsp;your movement data). We recommend that you create a folder called <code>data</code> and move all your datasets into this folder. In order to ignore this folder and files from being tracked by git we need to add it to the .gitigore file. You should already have such a file in your projects root folder. If this is not the case you can create one by clicking on File → New File → Text File and then saving this file in the root directory of your project with the name .gitignore (note the period!).</p>
 <p>Here are some examples on how you can exclude folders and files in .gitignore:</p>
 <pre class="git"><code>/data             # ignores the folder data
@@ -188,10 +247,13 @@ Figure&nbsp;1
 garmin-export.csv # ignores the specific file called garmin-export.csv</code></pre>
 <p>For more information on .gitignore have a look <a href="https://git-scm.com/docs/gitignore#_pattern_format">here</a>.</p>
 <p>If you already have committed a file to Git that you did not want to commit, you can go through the following <a href="https://sentry.io/answers/delete-a-file-from-a-git-repository/">instruction</a> to completely remove it from Git and Github again. If you need help with this, you can get in contact with us.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="yaml-header" class="level3">
 <h3 class="anchored" data-anchor-id="yaml-header">YAML Header</h3>
-<p>Note that index.qmd has default <a href="https://quarto.org/docs/reference/cells/cells-knitr.html#cell-output">chunk options</a> set in the <a href="https://quarto.org/docs/get-started/hello/rstudio.html#yaml-header">YAML header</a> (first few lines in between the two <code>---</code>). Please don’t change these specific options (except for the <code>lang</code> option). If for some reason you want to change this behaviour for a specific chunk, you can override these options by setting the chunk options within the chunk (more information <a href="https://quarto.org/docs/get-started/hello/rstudio.html#code-chunks">here</a>).</p>
+<p>Note that index.qmd has default <a href="https://quarto.org/docs/reference/cells/cells-knitr.html#cell-output">chunk options</a> set in the <a href="https://quarto.org/docs/get-started/hello/rstudio.html#yaml-header">YAML header</a> (first few lines in between the two <code>---</code>). Please don’t change these specific options (except for the <code>lang</code> option). If for some reason you want to change this behavior for a specific chunk, you can override these options by setting the chunk options within the chunk (more information <a href="https://quarto.org/docs/get-started/hello/rstudio.html#code-chunks">here</a>).</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
@@ -205,55 +267,109 @@ garmin-export.csv # ignores the specific file called garmin-export.csv</code></p
 <section id="sec-heavy-computation" class="level3">
 <h3 class="anchored" data-anchor-id="sec-heavy-computation">Heavy computation</h3>
 <p>Including <em>all</em> your code index.qmd and rendering it each time you want to preview your report makes your report less error prone and more reproducible, but this workflow can be cumbersome when the code takes a long time to execute. This prevents you iterating fast when writing up your report. We suggest the following method to solve this:</p>
-<p>Outsource your preprocessing steps and especially the heavy computation into a seperate R-Script called <code>preprocessing.R</code>. In this script, generate all outputs that you will need in your report (index.qmd).</p>
-<p>To “prove” that this script runs on your machine from top to bottom, in a new session and without any errors, use the function <code>knitr::spin("preprocessing.R")</code> from the package <a href="https://yihui.org/knitr/"><code>knitr</code></a> (you might need to install this first). <strong>Push the resulting files</strong> (<code>preprocessing.html</code> / <code>preprocessing.md</code>) <strong>to GitHub</strong> (this is a hard requirement).</p>
+<p>Outsource your preprocessing steps (and especially the heavy computation) into a seperate R-Script called <code>preprocessing.R</code>. Iteratively develop this script to import, clean an prepare your data. Then save your result to a file (e.g.&nbsp;as a geopackage, rda or csv file).</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>preprocessing.R</strong></pre>
+</div>
+<div class="sourceCode" id="cb6" data-filename="preprocessing.R"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>my_tracks <span class="ot">&lt;-</span> <span class="fu">read_sf</span>(<span class="st">"my_tracking_data.gpx"</span>) </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># imagine some complex preprocessing logic here:</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>my_tracks <span class="ot">&lt;-</span> <span class="fu">filter</span>(my_tracks, <span class="at">segment_id =</span> <span class="st">"one"</span>) </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># in the end, export your file under a new name:</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">st_write</span>(my_tracks, <span class="st">"my_tracks.gpkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, you can import the results from <code>preprocessing.R</code> in <code>index.qmd</code>:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>index.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb7" data-filename="index.qmd"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># import the cleaned file from preprocessing.R</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>my_tracks <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"my_tracks.gpkg"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To “prove” that this script runs on your machine from top to bottom, in a new session and without any errors, use the function <code>quarto::render("preprocessing.R")</code>. Do this once you are sure the whole script runs smoothly without any errors.</p>
+<p>Publish the resulting file (<code>preprocessing.html</code>) and provide a link in your report (<strong>this is a hard requirement</strong>).</p>
+</div>
+</div>
 </section>
 <section id="sec-maps-plots-tables" class="level3">
 <h3 class="anchored" data-anchor-id="sec-maps-plots-tables">Maps, Plots, Tables</h3>
 <p>Interactive maps are only reasonable for small amounts of data (e.g.&nbsp;a few locations of a single wild boar). If you want to show a large amount of data, consider making a static map instead (using <code>tmap_mode("plot")</code>).</p>
-<p>If you want to visualize a dataframe as a table, you can using the function <code>knitr::kabel(df)</code> (replace <code>df</code> with the name of your <code>data.frame</code>).</p>
+<p>If you want to visualize a dataframe as a table, you can using the function <code>knitr::kabel(df)</code> (replace <code>df</code> with the name of your <code>data.frame</code>). For more complex tables, consider <a href="https://haozhu233.github.io/kableExtra/"><code>kableExtra</code></a> or <a href="https://gt.rstudio.com/"><code>gt</code></a>.</p>
 <p>To add a caption (text) to a figure, using the <code>#| fig-cap:</code> option, as in the example below. Similarly, a caption for a table is added via <code>#| tbl-cap</code>. More information for <a href="https://quarto.org/docs/reference/cells/cells-knitr.html#figures">figures</a> and <a href="https://quarto.org/docs/reference/cells/cells-knitr.html#tables">tables</a>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "A visualisation of the wild boar data"</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(wildboar) +</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_sf()</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "A visualisation of the wild boar data"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wildboar) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To reference (mention) a figure in your text, first add a label to the specific chunk using <code>label</code>. You can then reference that figure using the label you specified.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>The wildboar move about, see @fig-wildboar.</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "A visualisation of the wild boar data"</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-wildboar</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="in">ggplot(wildboar) +</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_sf()</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>The wildboar move about, see @fig-wildboar.</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "A visualisation of the wild boar data"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-wildboar</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wildboar) <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>()</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note that for figures, the label must begin with <code>fig-</code>. For more information, see <a href="https://quarto.org/docs/authoring/cross-references.html#computations">here</a>.</p>
 <p>Similarly, to reference a table in your text, use a label starting with <code>tbl-something</code> and reference it with <code>@tbl-something</code>, as shown below. For more information, read <a href="https://quarto.org/docs/authoring/cross-references.html#computations-1">this</a>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>@tbl-wildboar-summary shows a summary of the wildboar data.</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="in">#| tbl-cap: "A summary of the wildboar data"</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: tbl-wildboar-summary</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::kable(wildboar_df)</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>@tbl-wildboar-summary shows a summary of the wildboar data.</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: "A summary of the wildboar data"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-wildboar-summary</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(wildboar_df)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="counting-words" class="level3">
 <h3 class="anchored" data-anchor-id="counting-words">Counting Words</h3>
 <p>To count the number of words in your report, install the rpackage <a href="https://github.com/benmarwick/wordcountaddin#how-to-install"><code>wordcountaddin</code></a>.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pacman") </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"pacman"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">p_install_gh</span>(<span class="st">"benmarwick/wordcountaddin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("pacman") </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"pacman"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">p_install_gh</span>(<span class="st">"benmarwick/wordcountaddin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then, add the following code chunk to your report:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>wordcountaddin<span class="sc">::</span><span class="fu">word_count</span>(<span class="st">"index.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>wordcountaddin<span class="sc">::</span><span class="fu">word_count</span>(<span class="st">"index.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="publishing" class="level3">
-<h3 class="anchored" data-anchor-id="publishing">Publishing</h3>
+<section id="publishing-with-github" class="level3">
+<h3 class="anchored" data-anchor-id="publishing-with-github">Publishing with GitHub</h3>
+<div class="callout callout-style-default callout-note callout-titled" title="Optional (only if you use Git)">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Optional (only if you use Git)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>To publish your report you need to follow the following steps:</p>
 <ol type="1">
 <li>Render your file to html. If your file is called index.qmd this will create a file called index.html</li>
@@ -261,14 +377,98 @@ garmin-export.csv # ignores the specific file called garmin-export.csv</code></p
 <li>Activate GitHub Pages on your repo: <em>Settings</em> → <em>Pages</em> → Choose your branch (usually <em>Main</em>) → Select Folder “Root”</li>
 <li>Once your page is ready, the url to your website is: username.github.io/reponame/</li>
 </ol>
+</div>
+</div>
+</div>
 </section>
-<section id="advanced" class="level3">
-<h3 class="anchored" data-anchor-id="advanced">Advanced</h3>
-<p>If you are up for some advanced aspects of writing reports with Quarto, checkout</p>
-<ul>
-<li>Citations &amp; Footnotes: https://quarto.org/docs/authoring/footnotes-and-citations.html</li>
-<li>Journal Article Template: https://quarto.org/docs/journals/formats.html</li>
-</ul>
+<section id="citations" class="level3">
+<h3 class="anchored" data-anchor-id="citations">Citations</h3>
+<p>To cite a paper:</p>
+<ol type="1">
+<li>Copy the bibtex key from the paper you want to cite, e.g using google scholar <a href="#fig-scholar" class="quarto-xref">Figure&nbsp;2</a></li>
+<li>Create a file named <code>bibliography.bib</code> and paste the bibtex key from the previous step (see <a href="#lst-bibtex" class="quarto-xref">Listing&nbsp;1</a>). You can change the entry label if you want (e.g.&nbsp;<code>laube2011</code>). You can add as many bibtex keys to this file as you like</li>
+<li>Add <code>bibliography.bib</code> to the YAML header of <code>index.qmd</code> under the entry <code>bibliography:</code> (see <a href="#lst-yaml" class="quarto-xref">Listing&nbsp;2</a>)</li>
+<li>Now, you can cite Patricks paper anywhere in your text, e.g.&nbsp;using <code>@laube2011</code>.</li>
+</ol>
+<p>For more citation methods, see <a href="https://quarto.org/docs/authoring/citations.html" class="uri">https://quarto.org/docs/authoring/citations.html</a></p>
+<div id="fig-scholar" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scholar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-scholar" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-scholar-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-scholar-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/scholar-1.png" class="img-fluid figure-img" data-ref-parent="fig-scholar">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-scholar-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Click on “Zitieren”
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-scholar" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-scholar-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-scholar-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/scholar-2.png" class="img-fluid figure-img" data-ref-parent="fig-scholar">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-scholar-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Click on “Bibtex”
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scholar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Export bibtex key from google scholar
+</figcaption>
+</figure>
+</div>
+<div id="lst-bibtex" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-bibtex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;1
+</figcaption>
+<div aria-describedby="lst-bibtex-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>bibliography.bib</strong></pre>
+</div>
+<div class="sourceCode" id="cb13" data-filename="bibliography.bib"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="va">@article</span>{<span class="ot">laube2011</span>,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>={How fast is a cow? Cross-scale analysis of movement data},</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span>={Laube, Patrick and Purves, Ross S},</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">journal</span>={Transactions in GIS},</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">volume</span>={15},</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">number</span>={3},</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">pages</span>={401--418},</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span>={2011},</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">publisher</span>={Wiley Online Library}</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</figure>
+</div>
+<div id="lst-yaml" class="listing quarto-float quarto-figure quarto-figure-left anchored">
+<figure class="quarto-float quarto-float-lst figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-lst quarto-uncaptioned" id="lst-yaml-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Listing&nbsp;2
+</figcaption>
+<div aria-describedby="lst-yaml-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>index.qmd</strong></pre>
+</div>
+<div class="sourceCode" id="cb14" data-filename="index.qmd"><pre class="sourceCode yml code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> references.bib</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</figure>
+</div>
+</section>
+<section id="templates" class="level3">
+<h3 class="anchored" data-anchor-id="templates">Templates</h3>
+<p>If you are up for some advanced aspects of writing reports with Quarto, checkout Journal Article Template: <a href="https://quarto.org/docs/journals/formats.html" class="uri">https://quarto.org/docs/journals/formats.html</a></p>
 
 </section>
 </section>
@@ -314,18 +514,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -357,7 +546,45 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -392,7 +619,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -440,7 +671,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
